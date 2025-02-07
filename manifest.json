@@ -1,0 +1,26 @@
+{
+  "background": {
+    "scripts": ["scripts/site-tracker.js"]
+  },
+
+  "browser_action": {
+    "default_title": "app time",
+    "default_popup": "popup/index.html"
+  },
+
+  "description": "this extension does literally nothing rn :)",
+
+  "manifest_version": 2,
+
+  "name": "app time",
+
+  "page_action": {
+    "default_title": "app time",
+    "default_popup": "popup/index.html"
+  },
+
+  "permissions": ["webNavigation"],
+
+  "version": "0.1"
+}
+
