@@ -9,17 +9,33 @@ addSiteButton.addEventListener("click", () => {
     togglePopupVisibility();
 })
 
-addSiteInput.addEventListener("keypress", (e) => {
+addSiteInput.addEventListener("keypress", async (e) => {
     if(e.key == "Enter" && addSiteInput.checkValidity()) {
-        addSite(addSiteInput.value);
+        await addSite(addSiteInput.value);
         addSiteInput.value = "";
         togglePopupVisibility();
     }
 })
 
 ////////////////////////////////////////////////////////////////////////////
-function addSite(url) {
+async function addSite(url) {
     console.log("adding", url);
+    try {
+        let curSitesObj = await browser.storage.local.get(["sites"]);
+        let newUrlObj = {
+            url,
+            timeUsed: 0
+        }
+        let newSites = Object.entries(curSitesObj).length == 0 ? [newUrlObj] : [...curSitesObj.sites, newUrlObj];  
+
+        await browser.storage.local.set({
+            sites: newSites 
+        }); 
+       console.log(newSites); 
+    } catch(err) {
+        console.error(err);
+    }
+    
 }
 
 function togglePopupVisibility() {
