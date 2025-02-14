@@ -19,7 +19,6 @@ addSiteInput.addEventListener("keypress", async (e) => {
 
 ////////////////////////////////////////////////////////////////////////////
 async function addSite(url) {
-    console.log("adding", url);
     try {
         let curSitesObj = await browser.storage.local.get(["sites"]);
         let newUrlObj = {
@@ -31,7 +30,6 @@ async function addSite(url) {
         await browser.storage.local.set({
             sites: newSites 
         }); 
-       console.log(newSites); 
     } catch(err) {
         console.error(err);
     }

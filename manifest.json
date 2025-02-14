@@ -19,7 +19,7 @@
     "default_popup": "popup/index.html"
   },
 
-  "permissions": ["storage", "webNavigation"],
+  "permissions": ["storage", "webNavigation", "tabs"],
 
   "version": "0.1"
 }
